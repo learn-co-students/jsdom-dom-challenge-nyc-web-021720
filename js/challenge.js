@@ -6,11 +6,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const plus = document.querySelector("button#plus");
   const like = document.querySelector("button#heart");
   const likesUl = document.querySelector("ul.likes");
+  const pause = document.querySelector("button#pause");
+  let isPause = false;
+  let interval = 1;
+
+  if ((isPause = false)) {
+    interval = 1;
+  } else {
+    interval = 1000;
+  }
 
   //Adds 1 to the counter every second
   setInterval(() => {
     counter.innerText = parseInt(counter.innerText) + 1;
-  }, 1000);
+  }, interval);
 
   //Adds 1 to the counter
   plus.addEventListener("click", () => {
@@ -26,5 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const newLike = document.createElement("li");
     newLike.innerText = counter.innerText;
     likesUl.appendChild(newLike);
+  });
+
+  pause.addEventListener("click", () => {
+    if (interval === 1000) {
+      isPause = true;
+    } else {
+      isPause = false;
+    }
   });
 });
